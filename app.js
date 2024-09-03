@@ -4,7 +4,7 @@ const names = [
     'luna lovegood', 'neville longbottom', 'minerva mcgonagall', 'bellatrix lestrange', 
     'dolores umbridge', 'fleur delacour', 'cedric diggory', 'remus lupin', 'horace slughorn',
     'kingsley shacklebolt', 'arthur weasley', 'molly weasley', 'fred weasley', 'george weasley',
-    'percy weasley', 'pansy parkinson','youknowwho'
+    'percy weasley', 'pansy parkinson','youknowwho','fabian prewett'
 ];
 
 let target = names[Math.floor(Math.random() * names.length)];
