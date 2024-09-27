@@ -45,27 +45,39 @@ const names = [
 
 ];
 
-let target = names[Math.floor(Math.random() * names.length)];
-let guessName = target.replace(/[a-z]/g, '_');
-let attempts = 10;
-let guessedLetters = new Set();
+
+let target, guessName, attempts, guessedLetters;
 
 const board = document.getElementById('board');
-const userLetter = document.getElementById('userLetter');
-const submitLetterButton = document.getElementById('submitLetter');
 const feedback = document.getElementById('feedback');
 const attemptsLeftElem = document.getElementById('attemptsLeft');
+const gameOverModal = document.getElementById('Modal');
+const gameOverMessage = document.getElementById('gameOverMessage');
+const keys = document.querySelectorAll('.key');
+
+function startGame() {
+    target = names[Math.floor(Math.random() * names.length)];
+    guessName = target.replace(/[a-z]/g, '_');
+    attempts = 10;
+    guessedLetters = new Set();
+    updateGameBoard();
+    attemptsLeftElem.textContent = `Attempts Left: ${attempts}`;
+    feedback.textContent = '';
+    gameOverModal.style.display = 'none'; 
+    gameOverMessage.textContent = ''; 
+    restartModal.style.display = 'none'; 
+    restartMessage.textContent = '';
+    
+    resetKeyboard();
+}
 
 function updateGameBoard() {
-   
     board.textContent = guessName.split('').join(' ');
 }
 
-function handleGuess() {
-    const input = userLetter.value.toLowerCase().trim();
-
+function handleGuess(input) {
     if (input.length !== 1 || !/^[a-z]$/.test(input)) {
-        feedback.textContent = 'Please enter a vaild letter.';
+        feedback.textContent = 'Please enter a valid letter.';
         return;
     }
 
@@ -75,6 +87,7 @@ function handleGuess() {
     }
 
     guessedLetters.add(input);
+    const currentKeyButton = document.querySelector(`.key[data-key="${input.toUpperCase()}"]`);
 
     if (target.includes(input)) {
         let newDisplay = '';
@@ -82,31 +95,51 @@ function handleGuess() {
             newDisplay += target[i] === input ? input : guessName[i];
         }
         guessName = newDisplay;
+
+        if (currentKeyButton) {
+            currentKeyButton.classList.add('correct');
+        }
     } else {
         attempts--;
+
+        if (currentKeyButton) {
+            currentKeyButton.classList.add('incorrect');
+        }
     }
 
     if (guessName === target) {
-        feedback.textContent = 'Congratulations! You guessed the name!';
-        submitLetterButton.disabled = true;
-    } else if (attempts === 0) {
-        feedback.textContent = `Game Over! The name was "${target}".`;
-        submitLetterButton.disabled = true;
+        restartMessage.textContent = `Yes! You guessed the name correctly: "${target}"`;
+        restartModal.style.display = 'flex'; 
+    } else if (attempts <= 0) {
+        gameOverMessage.textContent = `The name was "${target}".`;
+        gameOverModal.style.display = 'flex'; 
     } else {
         feedback.textContent = '';
     }
-
+    
     attemptsLeftElem.textContent = `Attempts Left: ${attempts}`;
     updateGameBoard();
-    userLetter.value = '';
 }
 
-submitLetterButton.addEventListener('click', handleGuess);
-userLetter.addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') {
-        handleGuess();
-    }
+function resetKeyboard() {
+    keys.forEach(key => {
+        key.classList.remove('correct', 'incorrect');
+    });
+}
+
+function restartGame() {
+    startGame();
+}
+
+document.addEventListener('keypress', (event) => {
+    handleGuess(event.key.toLowerCase());
 });
 
+keys.forEach(key => {
+    key.addEventListener('click', () => {
+        handleGuess(key.dataset.key.toLowerCase());
+    });
+});
 
-updateGameBoard();
+startGame();
+
