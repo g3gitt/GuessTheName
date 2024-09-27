@@ -37,7 +37,7 @@ input {
     margin-top: 10px;
     border-radius: 4px;
     width: 100%;
-    max-width: 50px;
+    max-width: 100%;
     text-align: center;
     background-color: #fff;
 }
@@ -63,7 +63,8 @@ button:hover {
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 20px;
-    width: 700px;
+    margin-left: 25%;
+    width: 50%;
 }
 
 .key {
@@ -136,21 +137,16 @@ button:hover {
     width: 80%;
     max-width: 400px; 
 }
-@media (min-width: 768px) {
-    .main {
-        flex-direction: row;
-    }
-    .sidebar {
-        width: 25%;
-        padding: 20px;
-    }
-    .content {
-        width: 75%;
-        padding: 20px;
-    }
-}
 
-.sidebar, .content {
-    padding: 10px;
+@media (max-width: 768px) {
+    .keyboard {
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    .key {
+        width: auto; 
+        margin: 5px 0; 
+    }
 }
 
