@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
     background-image: url(img/pexels-nathanjhilton-28303226.jpg);
     background-size:cover;
@@ -131,5 +136,21 @@ button:hover {
     width: 80%;
     max-width: 400px; 
 }
+@media (min-width: 768px) {
+    .main {
+        flex-direction: row;
+    }
+    .sidebar {
+        width: 25%;
+        padding: 20px;
+    }
+    .content {
+        width: 75%;
+        padding: 20px;
+    }
+}
 
+.sidebar, .content {
+    padding: 10px;
+}
 
