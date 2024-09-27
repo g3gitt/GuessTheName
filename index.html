@@ -7,20 +7,62 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
     <div class="container">
         <h2>Guess the name from The Harry Potter Universe</h2>
-       <div id="board"></div>
-<input id="userLetter" type="text" />
-<button id="submitLetter">Submit</button>
-<div id="feedback"></div>
-<div id="attemptsLeft"></div>
-
+        <div id="board"></div>
+        <div id="feedback"></div>
+        <div id="attemptsLeft"></div>
     </div>
-    <script src="app.js"></script>
- <script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
+    <div id="Modal" style="display: none;">
+      <div class="modal-content">
+          <h2>Game Over!</h2>
+          <p id="gameOverMessage"></p>
+          <button onclick="restartGame()">Restart Game</button>
+      </div>
+  </div>
+  <div id="restartModal" style="display: none;">
+    <div class="modal-content">
+        <h2>Congratulations!</h2>
+        <p id="restartMessage"></p>
+        <p>Wanna play again?</p>
+        <button onclick="restartGame()">Restart Game</button>
+    </div>
+</div>
+    <footer>
+      <div data-keyboard class="keyboard">
+        <button class="key" data-key="Q">Q</button>
+        <button class="key" data-key="W">W</button>
+        <button class="key" data-key="E">E</button>
+        <button class="key" data-key="R">R</button>
+        <button class="key" data-key="T">T</button>
+        <button class="key" data-key="Y">Y</button>
+        <button class="key" data-key="U">U</button>
+        <button class="key" data-key="I">I</button>
+        <button class="key" data-key="O">O</button>
+        <button class="key" data-key="P">P</button>
+        <div class="space"></div>
+        <button class="key" data-key="A">A</button>
+        <button class="key" data-key="S">S</button>
+        <button class="key" data-key="D">D</button>
+        <button class="key" data-key="F">F</button>
+        <button class="key" data-key="G">G</button>
+        <button class="key" data-key="H">H</button>
+        <button class="key" data-key="J">J</button>
+        <button class="key" data-key="K">K</button>
+        <button class="key" data-key="L">L</button>
+        <div class="space"></div>
+        <button class="key" data-key="Z">Z</button>
+        <button class="key" data-key="X">X</button>
+        <button class="key" data-key="C">C</button>
+        <button class="key" data-key="V">V</button>
+        <button class="key" data-key="B">B</button>
+        <button class="key" data-key="N">N</button>
+        <button class="key" data-key="M">M</button>
+        </button>
+        </div>
+        
+      
+    </footer>
+    <script type="text/javascript" src="app.js"></script>
 </body>
 </html>
