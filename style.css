@@ -1,24 +1,28 @@
 body {
-    font-family: sans-serif;
-    background-color: #000000;
+    background-image: url(img/pexels-nathanjhilton-28303226.jpg);
+    background-size:cover;
+    font-family: 'Garamond', serif; 
+    background-color: #000000; 
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    flex-direction: column;
+   
 }
 
 .container {
     width: 400px;
-    background-color: #fff;
+    background-color: #ffffff; 
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.1);
     text-align: center;
 }
 
-h1 {
+h2 {
     margin-bottom: 20px;
+    color: #000000; 
 }
 
 input {
@@ -26,38 +30,104 @@ input {
     padding: 10px;
     margin-bottom: 10px;
     margin-top: 10px;
-    border: 2px solid #000000;
     border-radius: 4px;
     width: 100%;
     max-width: 50px;
+    text-align: center;
+    background-color: #fff;
 }
 
 button {
+    font-family: 'Garamond', serif;
+    font-weight: bolder;
     font-size: 18px;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
-    background-color: #de00bd;
-    color: #fff;
+    color: #000000; 
     cursor: pointer;
+    margin: 5px;
 }
 
 button:hover {
-    background-color: #670058;
+    background-color: #03ff00;
 }
 
-#gameBoard {
+.keyboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+    width: 700px;
+}
+
+.key {
+    font-family: 'Garamond', serif;
+    font-weight: bolder;
+    margin: 5px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f0f0f0; 
+    cursor: pointer;
+    width: 60px;
+}
+
+.key:hover {
+    background-color: #ccc; 
+}
+
+.key.incorrect {
+    background-color: #434343;
+    
+}
+
+.key.correct {
+    background-color:  #03bb00;
+    color: #ffffff;
+   
+}
+
+#board {
     font-size: 24px;
+    font-weight: bolder;
     margin-bottom: 20px;
+    color: #000000;
 }
-
 
 #feedback {
     font-size: 18px;
     margin-top: 10px;
+    color: #000000;
 }
 
 #attemptsLeft {
     font-size: 16px;
     margin-top: 10px;
+    color: #ff0000;
+    font-weight: bolder;
+}
+
+#Modal, #restartModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: #000000;
+    width: 80%;
+    max-width: 400px; 
 }
