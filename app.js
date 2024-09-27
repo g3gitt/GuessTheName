@@ -173,7 +173,8 @@ const names = [
     'hufflepuff',
     'gryffindor',
     'kingsley shacklebolt',
-    'argus filch'
+    'argus filch',
+     'He-Who-Must-Not-Be-Named'
 ];
 
 
