@@ -423,10 +423,10 @@ function handleGuess(input) {
     }
 
     if (guessName === target) {
-        restartMessage.textContent = `Yes! You guessed the name correctly: "${answer}"`;
+        restartMessage.textContent = `Yes! You guessed the name correctly: "${target}"`;
         restartModal.style.display = 'flex'; 
     } else if (attempts <= 0) {
-        gameOverMessage.textContent = `The name was "${answer}".`;
+        gameOverMessage.textContent = `The name was "${target}".`;
         gameOverModal.style.display = 'flex'; 
     } else {
         feedback.textContent = '';
